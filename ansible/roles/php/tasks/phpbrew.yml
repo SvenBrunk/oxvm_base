@@ -28,6 +28,7 @@
 - name: Install PHPBrew pre-built packages dependencies
   become: yes
   apt: pkg=git state=latest
+  when: php.version
 
 - name: Check if PHPBrew is installed
   stat: path=/usr/local/bin/phpbrew
