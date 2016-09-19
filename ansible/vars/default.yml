@@ -48,6 +48,7 @@ mysql:
   user: user
   password: password
   dump: ''
+zendguard_version_name: 'zend-loader-php5.6-linux-x86_64'
 php:
   install: true
   packages:
@@ -61,6 +62,7 @@ php:
     - php5.6-zip
   version: ~
   display_errors: On
+  extension_dir: '/usr/lib/php/20131226/'
   phpbrew:
     cache:
       repo: 'https://github.com/OXID-eSales/oxvm_assets'
@@ -80,7 +82,7 @@ php:
   pecl_packages: ~
   zendguard:
     install: false
-    pkg_url: https://github.com/OXID-eSales/oxvm_assets/blob/master/zend-loader-php5.6-linux-x86_64.tar.gz?raw=true
+    pkg_url: "https://github.com/OXID-eSales/oxvm_assets/blob/master/{{ zendguard_version_name }}.tar.gz?raw=true"
   ioncube:
     install: false
     pkg_url: http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64_6.0.6.tar.gz
