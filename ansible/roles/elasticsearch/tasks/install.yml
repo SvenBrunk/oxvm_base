@@ -1,5 +1,5 @@
 ---
-- name: Download elastic search in version 2.3.3
+- name: "Download elasticsearch"
   get_url:
     dest: "{{ elasticsearch.repo.deb_destination }}"
     url: "{{ elasticsearch.repo.deb_source }}"
@@ -7,16 +7,16 @@
 
 - name: Install elasticsearch
   become: yes
-  shell: "dpkg -i /tmp/elasticsearch_2_3_3.deb"
+  apt: deb="{{ elasticsearch.repo.deb_destination }}"
 
 - name: Set elasticsearch configuration
   template: src=elasticsearch.yml dest=/etc/elasticsearch/elasticsearch.yml
   become: yes
 
-- name: Download decompound plugin for elastic search
+- name: Activate decompound plugin for elastic search
   become: yes
-  shell: "/usr/share/elasticsearch/bin/./plugin install http://xbib.org/repository/org/xbib/elasticsearch/plugin/elasticsearch-analysis-decompound/2.3.3.0/elasticsearch-analysis-decompound-2.3.3.0-plugin.zip"
+  elasticsearch_plugin: state=present name="http://xbib.org/repository/org/xbib/elasticsearch/plugin/elasticsearch-analysis-decompound/{{elasticsearch_version}}.0/elasticsearch-analysis-decompound-{{elasticsearch_version}}.0-plugin.zip"
 
 - name: restart elasticsearch
   become: yes
-  service: name=elasticsearch enabled=yes state=restarted
+  service: name=node1_elasticsearch enabled=yes state=restarted
