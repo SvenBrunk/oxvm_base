@@ -19,4 +19,4 @@
 
 - name: restart elasticsearch
   become: yes
-  service: name=node1_elasticsearch enabled=yes state=restarted
+  service: name=elasticsearch enabled=yes state=restarted
