@@ -251,8 +251,8 @@ Provide HTTP auth for composer. e.G. to the oxid enterprise repository
   ---
   php:
     composer:
-      http-basic:
-      - basic-url: enterprise-edition.packages.oxid-esales.com
+      http_basic:
+      - basic_url: enterprise-edition.packages.oxid-esales.com
         username:<username>
         password:<password>
 
